@@ -27,8 +27,12 @@ class PdfExportSheet extends StatefulWidget {
 }
 
 class _PdfExportSheetState extends State<PdfExportSheet> {
+  final _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+
   bool _generating = true;
   bool _done = false;
+  bool _sending = false;
   String? _error;
   Uint8List? _pdfBytes;
 
@@ -36,6 +40,12 @@ class _PdfExportSheetState extends State<PdfExportSheet> {
   void initState() {
     super.initState();
     _generatePdf();
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    super.dispose();
   }
 
   Future<void> _generatePdf() async {
@@ -100,14 +110,21 @@ class _PdfExportSheetState extends State<PdfExportSheet> {
   }
 
   Future<void> _emailPdf() async {
+    if (!_formKey.currentState!.validate()) return;
+
+    setState(() => _sending = true);
+
+    final email = _emailController.text.trim();
     final subject = Uri.encodeComponent(
       'My Navi Career Report - ${widget.match.title}',
     );
     final body = Uri.encodeComponent(_buildEmailBody());
-    final uri = Uri.parse('mailto:?subject=$subject&body=$body');
+    final uri = Uri.parse('mailto:$email?subject=$subject&body=$body');
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
     }
+
+    if (mounted) setState(() => _sending = false);
   }
 
   @override
@@ -158,7 +175,7 @@ class _PdfExportSheetState extends State<PdfExportSheet> {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      'Email your career report',
+                      'Enter your email to receive the report',
                       style: NaviTextStyles.label.copyWith(fontSize: 12),
                     ),
                   ],
@@ -203,17 +220,98 @@ class _PdfExportSheetState extends State<PdfExportSheet> {
           if (_done) ...[
             _buildPdfPreview(),
             const SizedBox(height: 16),
+            Form(
+              key: _formKey,
+              child: TextFormField(
+                controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
+                textInputAction: TextInputAction.done,
+                decoration: InputDecoration(
+                  hintText: 'your@email.com',
+                  labelText: 'Your email address',
+                  prefixIcon: const Icon(
+                    Icons.email_outlined,
+                    size: 20,
+                  ),
+                  filled: true,
+                  fillColor: NaviColors.primaryPale.withValues(alpha: 0.08),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                    borderSide: BorderSide(
+                      color: NaviColors.textMuted.withValues(alpha: 0.2),
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                    borderSide: BorderSide(
+                      color: NaviColors.textMuted.withValues(alpha: 0.2),
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                    borderSide: const BorderSide(
+                      color: NaviColors.primary,
+                      width: 1.5,
+                    ),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                    borderSide: const BorderSide(
+                      color: NaviColors.sparkPink,
+                    ),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                    borderSide: const BorderSide(
+                      color: NaviColors.sparkPink,
+                      width: 1.5,
+                    ),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 14,
+                  ),
+                ),
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return 'Please enter your email';
+                  }
+                  final emailRegex = RegExp(
+                    r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+                  );
+                  if (!emailRegex.hasMatch(value.trim())) {
+                    return 'Please enter a valid email';
+                  }
+                  return null;
+                },
+                onFieldSubmitted: (_) => _emailPdf(),
+              ),
+            ),
+            const SizedBox(height: 14),
           ],
           if (!_generating)
             SizedBox(
               width: double.infinity,
               child: FilledButton.icon(
-                onPressed: _done ? _emailPdf : null,
-                icon: const Icon(Icons.email_rounded, size: 18),
-                label: const Text('Email Report'),
+                onPressed: _done && !_sending ? _emailPdf : null,
+                icon: _sending
+                    ? const SizedBox(
+                        width: 18,
+                        height: 18,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: Colors.white,
+                        ),
+                      )
+                    : const Icon(Icons.send_rounded, size: 18),
+                label: Text(_sending ? 'Opening email...' : 'Send Report'),
                 style: FilledButton.styleFrom(
                   backgroundColor: NaviColors.primary,
                   foregroundColor: Colors.white,
+                  disabledBackgroundColor:
+                      NaviColors.textMuted.withValues(alpha: 0.3),
+                  disabledForegroundColor:
+                      NaviColors.textMuted.withValues(alpha: 0.6),
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
