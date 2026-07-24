@@ -1,0 +1,283 @@
+{
+  "_meta": {
+    "description": "Philippine IT/business career market data for Navi career recommendation engine",
+    "currency": "PHP",
+    "salary_unit": "monthly",
+    "last_updated": "2026-06-30",
+    "sources": [
+      "Jobstreet Philippines Career Advice (ph.jobstreet.com/career-advice) — primary source for PH monthly salary ranges, accessed June 2026",
+      "PayScale Philippines (payscale.com/research/PH) — supplementary, annual total compensation by experience level",
+      "Glassdoor Philippines salary estimates (glassdoor.com) — supplementary, percentile pay ranges",
+      "ERI SalaryExpert (salaryexpert.com / erieri.com) — supplementary, employer-reported survey data"
+    ],
+    "notes": "Salary ranges reflect the Jobstreet 'average salary' band reported for the Philippines as of mid-2026, which is based on disclosed salaries in active job postings. These are entry-to-mid level market averages, not senior/expert compensation. Demand levels are qualitative assessments based on relative job posting volume observed across Jobstreet, Indeed PH, and Glassdoor during research, combined with industry growth commentary. This dataset should be periodically refreshed as it reflects a snapshot in time.",
+    "matching_guidance": "This dataset is intentionally wider than a typical 'top 3' career quiz so the recommendation engine (Gemini) can surface careers the student did not expect, not just the most obvious title match. Each career includes 'interest_tags' (the underlying motivations/activities the role satisfies) and 'work_style_tags' (how the day-to-day actually feels) in addition to 'related_skills' (concrete tools/competencies). When generating recommendations, match the student's quiz answers and free-text feedback against interest_tags and work_style_tags first — these capture transferable fit even when the student has never heard of the job title — then use related_skills and category to explain the reasoning and surface skill gaps. 'discoverable: true' marks careers that are intentionally less obvious for a Service Management / Business Analytics IT student but are realistic next steps given their academic foundation; the AI should not hesitate to recommend these when the fit is genuinely strong, even if the student never selected them as a known interest."
+  },
+  "careers": [
+    {
+      "id": "service_manager",
+      "title": "Service Manager",
+      "aliases": ["IT Service Manager", "Technical Services Manager"],
+      "category": "Service Management",
+      "discoverable": false,
+      "salary_range_php": { "min": 60000, "max": 95000 },
+      "salary_note": "Jobstreet PH average for 'IT Manager' is ₱70,000–₱80,000/mo; broader IT Service Management roles (e.g. IT Project Manager) average ₱85,000–₱95,000/mo. Range reflects this band.",
+      "demand_level": "High",
+      "demand_note": "Consistently high posting volume across Taguig, Makati, Pasig, Manila, and Quezon City; strong presence in BPO/GCC and outsourcing sectors.",
+      "top_employers": ["Accenture", "Deloitte", "Globe Telecom", "NTT Philippines", "Concentrix"],
+      "related_skills": ["ITIL", "Service Delivery", "Stakeholder Management", "MS Office & Tools", "People Management"],
+      "interest_tags": ["leading teams", "keeping operations running smoothly", "solving customer/client problems", "process improvement", "being the point person during a crisis"],
+      "work_style_tags": ["people-facing", "structured/process-driven", "calm under pressure", "coordinating across departments"],
+      "typical_education": "Bachelor's degree in IT, Business Administration, or related field",
+      "sources": [
+        "https://ph.jobstreet.com/career-advice/role/information-technology-manager/salary",
+        "https://ph.jobstreet.com/career-advice/role/information-technology-project-manager/salary",
+        "https://www.glassdoor.com/Salaries/manila-it-service-management-specialist-salary-SRCH_IL.0,6_IM995_KO7,39.htm"
+      ]
+    },
+    {
+      "id": "business_analyst",
+      "title": "Business Analyst",
+      "aliases": ["IT Business Analyst", "Business Systems Analyst"],
+      "category": "Business Analytics",
+      "discoverable": false,
+      "salary_range_php": { "min": 48000, "max": 76000 },
+      "salary_note": "Jobstreet PH average for 'Business Analyst' is ₱48,000–₱58,000/mo; 'IT Business Analyst' (more technical variant) averages ₱66,000–₱76,000/mo.",
+      "demand_level": "High",
+      "demand_note": "High and steady posting volume, especially in BPO, IT outsourcing, banking, and shared services sectors.",
+      "top_employers": ["NTT Philippines", "Cognizant", "ATOS", "Capgemini", "TransUnion"],
+      "related_skills": ["Requirements Analysis", "Process Improvement", "SQL", "Microsoft Excel", "Agile Software Development"],
+      "interest_tags": ["bridging business and tech", "analyzing how a company works", "finding inefficiencies", "translating requirements", "improving workflows"],
+      "work_style_tags": ["analytical", "people-facing", "documentation-heavy", "meetings and interviews with stakeholders"],
+      "typical_education": "Bachelor's degree in Business Administration, IT, or related field",
+      "sources": [
+        "https://ph.jobstreet.com/career-advice/role/business-analyst/salary",
+        "https://ph.jobstreet.com/career-advice/role/information-technology-business-analyst/salary",
+        "https://www.payscale.com/research/PH/Job=Business_Analyst%2C_IT/Salary"
+      ]
+    },
+    {
+      "id": "data_analyst",
+      "title": "Data Analyst",
+      "aliases": ["Junior Data Analyst", "Business Intelligence Analyst"],
+      "category": "Business Analytics",
+      "discoverable": false,
+      "salary_range_php": { "min": 33000, "max": 50000 },
+      "salary_note": "Jobstreet PH average for 'Data Analyst' is ₱33,000–₱43,000/mo. Business Intelligence Analyst (closely related, slightly senior variant) averages ₱50,000–₱60,000/mo.",
+      "demand_level": "High",
+      "demand_note": "Very high entry-level demand, frequently cited as a common entry point into the broader data field in PH job postings.",
+      "top_employers": ["EXL Service", "IBEX Global Solutions", "Nezda Technologies", "Outsourced Quality Assured Services", "Digital Room Philippines"],
+      "related_skills": ["Excel", "SQL", "Data Visualization", "Python (basic)", "Statistics"],
+      "interest_tags": ["finding patterns in numbers", "working with spreadsheets and dashboards", "answering questions with evidence", "quiet focused work"],
+      "work_style_tags": ["analytical", "independent/heads-down", "detail-oriented", "tool-driven (Excel, SQL, BI tools)"],
+      "typical_education": "Bachelor's degree in IT, Statistics, Mathematics, or related field",
+      "sources": [
+        "https://ph.jobstreet.com/career-advice/role/data-analyst/salary",
+        "https://ph.jobstreet.com/career-advice/role/business-intelligence-analyst/salary",
+        "https://www.payscale.com/research/PH/Job=Data_Analyst/Salary"
+      ]
+    },
+    {
+      "id": "project_manager",
+      "title": "Project Manager",
+      "aliases": ["IT Project Manager", "Technical Project Manager"],
+      "category": "Service Management",
+      "discoverable": false,
+      "salary_range_php": { "min": 50000, "max": 95000 },
+      "salary_note": "Jobstreet PH average for general 'Project Manager' is ₱50,000–₱60,000/mo; 'IT Project Manager' specifically averages ₱85,000–₱95,000/mo, reflecting higher pay for technical project leadership.",
+      "demand_level": "High",
+      "demand_note": "Strong, sustained demand across IT outsourcing, construction-adjacent tech, and enterprise digital transformation projects.",
+      "top_employers": ["Technology Elite Inc.", "REALPAGE Philippines", "NTT Philippines", "Indra Philippines", "Genie Technologies"],
+      "related_skills": ["Agile/Scrum", "Stakeholder Communication", "Risk Management", "MS Project", "Budgeting"],
+      "interest_tags": ["organizing chaos into a plan", "leading and organizing teams or projects", "hitting deadlines", "juggling multiple moving parts"],
+      "work_style_tags": ["people-facing", "structured/process-driven", "high accountability", "coordinating across departments"],
+      "typical_education": "Bachelor's degree in IT, Engineering, or Business; PMP certification advantageous",
+      "sources": [
+        "https://ph.jobstreet.com/career-advice/role/information-technology-project-manager/salary",
+        "https://ph.jobstreet.com/career-advice/role/project-manager/salary"
+      ]
+    },
+    {
+      "id": "ux_designer",
+      "title": "UX Designer",
+      "aliases": ["UI/UX Designer", "User Experience Designer"],
+      "category": "Design",
+      "discoverable": false,
+      "salary_range_php": { "min": 38000, "max": 80000 },
+      "salary_note": "Jobstreet PH average for 'User Experience Designer' is ₱70,000–₱80,000/mo; the more UI-focused 'User Interface Designer' role averages lower, at ₱38,000–₱48,000/mo. Range spans both.",
+      "demand_level": "High",
+      "demand_note": "Growing demand tied to digital product and fintech growth in PH; strong freelance/remote international client market as well.",
+      "top_employers": ["Converge ICT Solutions", "Synchrony Global Services", "Growve Inc.", "TV5 Network", "Point Digital Finance"],
+      "related_skills": ["Figma", "User Research", "Wireframing", "Interaction Design", "Usability Testing"],
+      "interest_tags": ["designing and creating visuals or ideas", "understanding how people think and behave", "making things easier to use", "creative problem solving"],
+      "work_style_tags": ["creative", "people-facing (user research)", "iterative/feedback-driven", "visual/hands-on tools"],
+      "typical_education": "Bachelor's degree in Design, HCI, IT, or related field; portfolio required",
+      "sources": [
+        "https://ph.jobstreet.com/career-advice/role/user-experience-designer/salary",
+        "https://ph.jobstreet.com/career-advice/role/user-interface-designer/salary"
+      ]
+    },
+    {
+      "id": "systems_analyst",
+      "title": "Systems Analyst",
+      "aliases": ["Business Systems Analyst", "IT Systems Analyst"],
+      "category": "Business Analytics",
+      "discoverable": false,
+      "salary_range_php": { "min": 33000, "max": 50000 },
+      "salary_note": "Jobstreet PH average for 'Systems Analyst' is ₱33,000–₱43,000/mo, similar in range to Data Analyst roles; senior Business Systems Analyst roles trend toward the higher end.",
+      "demand_level": "High",
+      "demand_note": "Consistent demand in enterprise IT departments and outsourcing firms supporting system integration and maintenance.",
+      "top_employers": ["Novare Philippines", "ATOS Information Technology", "Alliance Software", "Cardinal Health International Philippines", "Quantrics Enterprises"],
+      "related_skills": ["Systems Documentation", "SQL", "Requirements Gathering", "Process Mapping", "SDLC"],
+      "interest_tags": ["understanding how systems fit together", "solving complex problems and systems", "documenting how things work", "translating business needs into technical specs"],
+      "work_style_tags": ["analytical", "structured/process-driven", "independent/heads-down", "documentation-heavy"],
+      "typical_education": "Bachelor's degree in Information Technology, Computer Science, or related field",
+      "sources": [
+        "https://ph.jobstreet.com/career-advice/role/systems-analyst/salary"
+      ]
+    },
+    {
+      "id": "data_scientist",
+      "title": "Data Scientist",
+      "aliases": ["Junior Data Scientist", "AI & Analytics Specialist"],
+      "category": "Business Analytics",
+      "discoverable": false,
+      "salary_range_php": { "min": 60000, "max": 120000 },
+      "salary_note": "Jobstreet PH average for 'Data Scientist' is ₱80,000–₱90,000/mo. Range widened to reflect entry-level postings starting near ₱60,000/mo and senior/specialized roles (AI & Analytics Specialist) reaching ₱120,000/mo based on PayScale and ERI survey data.",
+      "demand_level": "High",
+      "demand_note": "Fast-growing demand driven by AI/ML adoption among PH-based GCCs (e.g. eCloudvalley, shared services centers); among the more competitive and well-compensated data roles.",
+      "top_employers": ["Lingaro Philippines", "AFNI Philippines", "Deltek Systems", "Avensys Consulting", "Kroll Global Solutions"],
+      "related_skills": ["Python", "R", "SQL", "Machine Learning", "Statistics", "Data Visualization"],
+      "interest_tags": ["predicting outcomes from data", "building models", "deep technical problem solving", "working with AI/ML"],
+      "work_style_tags": ["analytical", "independent/heads-down", "research-driven", "tool-heavy (Python, statistics)"],
+      "typical_education": "Bachelor's or Master's degree in Data Science, Computer Science, Statistics, or related field",
+      "sources": [
+        "https://ph.jobstreet.com/career-advice/role/data-scientist/salary",
+        "https://www.payscale.com/research/PH/Job=Data_Scientist/Salary",
+        "https://www.erieri.com/salary/job/data-scientist/philippines"
+      ]
+    },
+    {
+      "id": "scrum_master",
+      "title": "Scrum Master",
+      "aliases": ["Agile Coach", "Agile Project Lead"],
+      "category": "Service Management",
+      "discoverable": true,
+      "salary_range_php": { "min": 60000, "max": 90000 },
+      "salary_note": "Jobstreet PH active postings show ₱60,000–₱70,000/mo base for mid-level (2+ yrs exp) Scrum Master roles in IT outsourcing firms; Paylab PH survey shows 80% of Scrum Masters earning ₱36,000–₱123,000/mo, supporting a wide entry-to-mid band.",
+      "demand_level": "Medium",
+      "demand_note": "Steady demand concentrated in IT outsourcing and software delivery teams using Agile; smaller talent pool than PM/BA roles but consistently posted in Metro Manila.",
+      "top_employers": ["HCL Technologies Philippines", "ADEC Innovations", "Vertere Global Solutions", "Kroll Global Solutions", "Rising Tide Digital"],
+      "related_skills": ["Agile/Scrum facilitation", "Jira", "Sprint Planning", "Conflict Resolution", "Servant Leadership"],
+      "interest_tags": ["leading and organizing teams or projects", "helping a team work better together", "removing blockers", "coaching others", "facilitating discussions"],
+      "work_style_tags": ["people-facing", "facilitative rather than directive", "fast-paced", "daily team interaction"],
+      "typical_education": "Bachelor's degree in IT, Business, or related field; Scrum Master certification (CSM/PSM) highly valued though not always required",
+      "sources": [
+        "https://ph.jobstreet.com/scrum-master-jobs",
+        "https://www.paylab.com/ph/salaryinfo/information-technology/scrum-master",
+        "https://www.glassdoor.com/Salaries/manila-philippines-scrum-master-salary-SRCH_IL.0,18_IM995_KO19,31.htm"
+      ]
+    },
+    {
+      "id": "product_owner",
+      "title": "Product Owner",
+      "aliases": ["Associate Product Owner", "Digital Product Owner"],
+      "category": "Service Management",
+      "discoverable": true,
+      "salary_range_php": { "min": 73000, "max": 83000 },
+      "salary_note": "Jobstreet PH average for 'Product Owner' is ₱73,000–₱83,000/mo, based on active job postings as of June 2026.",
+      "demand_level": "Medium",
+      "demand_note": "Growing role as PH-based teams take on more product (not just delivery/outsourcing) responsibility for global companies; moderate but rising posting volume.",
+      "top_employers": ["Avaloq Philippines", "Eastvantage Business Solutions", "Thakral One", "BSFIL Technologies", "ATOS Information Technology"],
+      "related_skills": ["Backlog Management", "Stakeholder Prioritization", "User Stories", "Agile/Scrum", "Roadmapping"],
+      "interest_tags": ["deciding what gets built and why", "balancing business needs with user needs", "owning a product's direction", "translating ideas into requirements"],
+      "work_style_tags": ["people-facing", "decision-making under ambiguity", "cross-functional collaboration", "structured/process-driven"],
+      "typical_education": "Bachelor's degree in Business, IT, or related field; Product Owner certification (CSPO) advantageous",
+      "sources": [
+        "https://ph.jobstreet.com/career-advice/role/product-owner/salary"
+      ]
+    },
+    {
+      "id": "qa_analyst",
+      "title": "QA Analyst",
+      "aliases": ["Quality Assurance Analyst", "Software Tester", "QA Tester"],
+      "category": "Quality & Testing",
+      "discoverable": true,
+      "salary_range_php": { "min": 28000, "max": 58000 },
+      "salary_note": "Jobstreet PH average for 'Quality Assurance Analyst' is ₱21,000–₱31,000/mo and 'Quality Analyst' is ₱28,000–₱38,000/mo; NodeFlair PH survey places median QA/Testing pay higher at ₱58,000/mo, reflecting that automation/technical QA roles pay notably more than manual/process QA.",
+      "demand_level": "High",
+      "demand_note": "Very high posting volume across BPO and software outsourcing firms; one of the more accessible entry points into tech for IT students who enjoy structured, detail-oriented work.",
+      "top_employers": ["Capgemini Philippines", "Outsourced Quality Assured Services Inc.", "EXL Service Philippines", "Cloudstaff Philippines", "Deltek Systems"],
+      "related_skills": ["Test Planning", "Manual Testing", "Bug Tracking", "Process Improvement", "Basic SQL"],
+      "interest_tags": ["finding what's broken before users do", "methodical step-by-step checking", "improving product quality", "attention to detail"],
+      "work_style_tags": ["detail-oriented", "independent/heads-down", "structured/process-driven", "collaborates closely with developers"],
+      "typical_education": "Bachelor's degree in IT, Computer Science, or related field; ISTQB certification advantageous for technical QA roles",
+      "sources": [
+        "https://ph.jobstreet.com/career-advice/role/quality-assurance-analyst/salary",
+        "https://ph.jobstreet.com/career-advice/role/quality-analyst/salary",
+        "https://nodeflair.com/salaries/philippines-qa-engineer-salary"
+      ]
+    },
+    {
+      "id": "it_auditor",
+      "title": "IT Auditor",
+      "aliases": ["IT Compliance Analyst", "GRC Analyst (Governance, Risk & Compliance)"],
+      "category": "Risk & Compliance",
+      "discoverable": true,
+      "salary_range_php": { "min": 30000, "max": 55000 },
+      "salary_note": "Entry-level GRC/IT Auditor roles in PH typically range ₱25,000–₱50,000/mo per recent cybersecurity-career-track reporting; ERI survey data (which skews toward senior/expert respondents) shows considerably higher averages, so the entry-level Jobstreet-comparable band is used here.",
+      "demand_level": "Medium",
+      "demand_note": "Steady demand from banks, Big 4 audit firms, and BPOs needing to demonstrate compliance (data privacy, SOX, ISO 27001); a less crowded niche than general BA/PM roles.",
+      "top_employers": ["KPMG Philippines", "EY Philippines", "PwC Philippines", "Deloitte Philippines", "BDO Unibank"],
+      "related_skills": ["Risk Assessment", "Internal Controls", "Data Privacy (RA 10173)", "ISO 27001 basics", "Audit Documentation"],
+      "interest_tags": ["making sure rules and processes are followed", "spotting risk before it becomes a problem", "structured investigative work", "working with policies and standards"],
+      "work_style_tags": ["detail-oriented", "structured/process-driven", "independent research", "periodic stakeholder interviews"],
+      "typical_education": "Bachelor's degree in IT, Accounting, or related field; certifications like CISA valued for career growth",
+      "sources": [
+        "https://itsourcecode.com/blogs/cybersecurity-career-roadmap-philippines-2026/",
+        "https://www.erieri.com/salary/job/it-auditor/philippines"
+      ]
+    },
+    {
+      "id": "cybersecurity_analyst",
+      "title": "Cybersecurity Analyst",
+      "aliases": ["SOC Analyst", "Junior Security Analyst"],
+      "category": "Security",
+      "discoverable": true,
+      "salary_range_php": { "min": 30000, "max": 50000 },
+      "salary_note": "Entry-level (0-2 yrs) SOC L1/junior security analyst roles in PH range ₱25,000–₱50,000/mo per 2026 cybersecurity career-track reporting, with BPO security delivery roles (Accenture, Concentrix) at the higher end due to night-shift premiums and USD client billing.",
+      "demand_level": "High",
+      "demand_note": "Rapidly growing demand driven by bank, telco, and BPO security operations centers (SOCs); widely cited as one of the fastest-growing PH tech career tracks in 2026.",
+      "top_employers": ["Accenture", "Concentrix", "IBM Philippines", "Globe Telecom", "BDO Unibank"],
+      "related_skills": ["Security Monitoring", "Incident Response basics", "Networking fundamentals", "CompTIA Security+", "SIEM tools"],
+      "interest_tags": ["protecting systems from threats", "investigating suspicious activity", "puzzle-solving under pressure", "staying ahead of attackers"],
+      "work_style_tags": ["analytical", "vigilant/alert-driven", "shift-based work common", "technical and hands-on"],
+      "typical_education": "Bachelor's degree in IT, Computer Science, or related field; CompTIA Security+ is the most commonly required entry-level certification in PH job postings",
+      "sources": [
+        "https://itsourcecode.com/blogs/cybersecurity-career-roadmap-philippines-2026/",
+        "https://ph.indeed.com/career/cybersecurity-analyst/salaries"
+      ]
+    },
+    {
+      "id": "erp_consultant",
+      "title": "ERP Consultant",
+      "aliases": ["SAP Functional Consultant", "Business Systems Consultant"],
+      "category": "Business Analytics",
+      "discoverable": true,
+      "salary_range_php": { "min": 45000, "max": 80000 },
+      "salary_note": "ERI survey data shows ERP Consultant as one of the lower-paid specializations among IT business-systems titles in PH relative to peers like Business Systems Analyst, but active Jobstreet postings for 'PSA Functional Consultant / Sr. Business Analyst' roles suggest a healthy ₱45,000–₱80,000/mo band for PH-based functional consulting work.",
+      "demand_level": "Medium",
+      "demand_note": "Consistent demand from companies running SAP, Oracle, or Microsoft Dynamics implementations; a natural extension for Business Analytics students who enjoy configuring systems to match business processes.",
+      "top_employers": ["NTT Philippines", "Accenture", "Cognizant", "Capgemini Philippines", "Indra Philippines"],
+      "related_skills": ["ERP Configuration (SAP/Oracle/Dynamics)", "Business Process Mapping", "Requirements Analysis", "Client Training", "Project Documentation"],
+      "interest_tags": ["configuring systems to fit a business", "working directly with client processes", "specializing in a major enterprise platform", "implementation projects"],
+      "work_style_tags": ["analytical", "client-facing", "project-based (implementation cycles)", "structured/process-driven"],
+      "typical_education": "Bachelor's degree in IT, Business Administration, or related field; vendor certifications (SAP, Oracle) valuable for career growth",
+      "sources": [
+        "https://ph.jobstreet.com/career-advice/role/business-analyst/salary",
+        "https://www.erieri.com/salary/job/it-auditor/philippines"
+      ]
+    }
+  ]
+}
+

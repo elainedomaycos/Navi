@@ -1,0 +1,62 @@
+name: navi
+description: Navi - AI-powered career guidance for Filipino IT students.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_animate: ^4.5.0        # animations
+  audioplayers: ^6.0.0           # soft interaction sounds
+  http: ^1.2.0                    # Groq API (OpenAI-compatible)
+  flutter_riverpod: ^2.5.1       # state management
+  flutter_dotenv: ^5.1.0         # secure API key storage
+  shared_preferences: ^2.5.5
+  pdf: ^3.13.0               # PDF generation
+  share_plus: ^10.0.0         # cross-platform share
+  url_launcher: ^6.2.0        # open mailto / browser links
+  path_provider: ^2.1.0       # temp file storage
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.14.4
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/navi.png"
+  adaptive_icon_background: "#FDFBFF"
+  adaptive_icon_foreground: "assets/images/navi.png"
+  min_sdk_android: 21
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/audio/
+    - assets/images/mascots/brit/
+    - assets/images/mascots/byte/
+    - assets/images/mascots/echo/
+    - assets/images/mascots/flux/
+    - assets/images/mascots/nova/
+    - assets/images/mascots/orbit/
+    - assets/fonts/
+    - assets/data/
+    - .env                        # for Gemini API key
+
+  fonts:
+    - family: Nunito
+      fonts:
+        - asset: assets/fonts/Nunito-Regular.ttf
+        - asset: assets/fonts/Nunito-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Nunito-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Nunito-ExtraBold.ttf
+          weight: 800
