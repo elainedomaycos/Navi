@@ -1,4 +1,3 @@
-import 'dart:html' as html;
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -70,17 +69,6 @@ class _PdfExportSheetState extends State<PdfExportSheet> {
             'Failed to generate PDF.\n\nError: $shortMsg\n\nPlease try again or check your data.';
       });
     }
-  }
-
-  Future<void> _downloadPdf() async {
-    if (_pdfBytes == null) return;
-    final blob = html.Blob([_pdfBytes], 'application/pdf');
-    final url = html.Url.createObjectUrlFromBlob(blob);
-    // ignore: unused_local_variable
-    final anchor = html.AnchorElement(href: url)
-      ..setAttribute('download', 'navi_career_report.pdf')
-      ..click();
-    html.Url.revokeObjectUrl(url);
   }
 
   String _buildEmailBody() {
@@ -170,7 +158,7 @@ class _PdfExportSheetState extends State<PdfExportSheet> {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      'Download or email your career report',
+                      'Email your career report',
                       style: NaviTextStyles.label.copyWith(fontSize: 12),
                     ),
                   ],
@@ -217,28 +205,21 @@ class _PdfExportSheetState extends State<PdfExportSheet> {
             const SizedBox(height: 16),
           ],
           if (!_generating)
-            Row(
-              children: [
-                Expanded(
-                  child: _ActionCard(
-                    icon: Icons.download_rounded,
-                    iconColor: NaviColors.primary,
-                    label: 'Download PDF',
-                    subtitle: 'Save to your device',
-                    onTap: _done ? _downloadPdf : null,
+            SizedBox(
+              width: double.infinity,
+              child: FilledButton.icon(
+                onPressed: _done ? _emailPdf : null,
+                icon: const Icon(Icons.email_rounded, size: 18),
+                label: const Text('Email Report'),
+                style: FilledButton.styleFrom(
+                  backgroundColor: NaviColors.primary,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
                   ),
                 ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: _ActionCard(
-                    icon: Icons.email_rounded,
-                    iconColor: NaviColors.sparkGreen,
-                    label: 'Email',
-                    subtitle: 'Send report summary',
-                    onTap: _done ? _emailPdf : null,
-                  ),
-                ),
-              ],
+              ),
             ),
         ],
       ),
@@ -286,8 +267,7 @@ class _PdfExportSheetState extends State<PdfExportSheet> {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  'Includes: Career Match, Radar Chart, Strengths, '
-                  'Weaknesses, Roadmap, Skills, Salary',
+                  'Career Match, Roadmap, Skills, Salary',
                   style: NaviTextStyles.label.copyWith(fontSize: 10),
                 ),
               ],
@@ -299,76 +279,6 @@ class _PdfExportSheetState extends State<PdfExportSheet> {
             size: 20,
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _ActionCard extends StatelessWidget {
-  final IconData icon;
-  final Color iconColor;
-  final String label;
-  final String subtitle;
-  final VoidCallback? onTap;
-
-  const _ActionCard({
-    required this.icon,
-    required this.iconColor,
-    required this.label,
-    required this.subtitle,
-    this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final enabled = onTap != null;
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(16),
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 12),
-          decoration: BoxDecoration(
-            color: enabled
-                ? iconColor.withValues(alpha: 0.06)
-                : NaviColors.textMuted.withValues(alpha: 0.06),
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(
-              color: enabled
-                  ? iconColor.withValues(alpha: 0.2)
-                  : NaviColors.textMuted.withValues(alpha: 0.15),
-            ),
-          ),
-          child: Column(
-            children: [
-              Icon(
-                icon,
-                size: 28,
-                color: enabled
-                    ? iconColor
-                    : NaviColors.textMuted,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                label,
-                style: NaviTextStyles.bodyMedium.copyWith(
-                  fontWeight: FontWeight.w800,
-                  fontSize: 13,
-                  color: enabled ? NaviColors.textDark : NaviColors.textMuted,
-                ),
-              ),
-              const SizedBox(height: 2),
-              Text(
-                subtitle,
-                style: NaviTextStyles.label.copyWith(
-                  fontSize: 10,
-                  color: enabled ? NaviColors.textMid : NaviColors.textMuted,
-                ),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }

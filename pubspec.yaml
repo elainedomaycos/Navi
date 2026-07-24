@@ -16,9 +16,7 @@ dependencies:
   flutter_dotenv: ^5.1.0         # secure API key storage
   shared_preferences: ^2.5.5
   pdf: ^3.13.0               # PDF generation
-  share_plus: ^10.0.0         # cross-platform share
   url_launcher: ^6.2.0        # open mailto / browser links
-  path_provider: ^2.1.0       # temp file storage
 
 dev_dependencies:
   flutter_test:
