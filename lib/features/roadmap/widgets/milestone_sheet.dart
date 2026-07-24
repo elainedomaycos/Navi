@@ -127,12 +127,10 @@ class _MilestoneSheetState extends ConsumerState<MilestoneSheet> {
                         difficulty: 'Medium',
                       );
                       final tasks = [
-                        for (final t in taskTitles)
+                        for (final e in taskTitles.asMap().entries)
                           GoalTask(
-                            id: DateTime.now()
-                                .microsecondsSinceEpoch
-                                .toString(),
-                            title: t,
+                            id: '${DateTime.now().microsecondsSinceEpoch}_${e.key}',
+                            title: e.value,
                           ),
                       ];
                       final goal = Goal(

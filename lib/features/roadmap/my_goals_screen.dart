@@ -844,11 +844,11 @@ class _AddGoalFormState extends ConsumerState<_AddGoalForm> {
                             difficulty: _difficulty,
                           );
                           final tasks = taskTitles
-                              .map((t) => GoalTask(
-                                    id: DateTime.now()
-                                        .microsecondsSinceEpoch
-                                        .toString(),
-                                    title: t,
+                              .asMap()
+                              .entries
+                              .map((e) => GoalTask(
+                                    id: '${DateTime.now().microsecondsSinceEpoch}_${e.key}',
+                                    title: e.value,
                                   ))
                               .toList();
                           final goal = Goal(
